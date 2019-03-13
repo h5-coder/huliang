@@ -13,7 +13,6 @@
 <script>
     import comHeader from '@/components/header/header.vue'
     import ApiService from '@/services/API-servies'
-    import { mapState, mapActions, mapGetters } from 'vuex'
 
     export default {
         //组件名

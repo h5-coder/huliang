@@ -1,7 +1,7 @@
 //js
 import Vue from 'vue'
 import router from './router'
-import Mint from 'mint-ui';
+// import Mint from 'mint-ui';
 // import store from './store/'
 import cookie from '@/../static/js/cookie.js'
 import filters from './filters/index.js'
@@ -14,7 +14,7 @@ import '../static/css/reset.css'
 //less
 import "./less/index.less"
 
-Vue.use(Mint);
+// Vue.use(Mint);
 Vue.use(VueI18n)
 
 // router.beforeEach((to, from, next) => {
@@ -30,7 +30,49 @@ Vue.use(VueI18n)
 //         next()
 //     }
 // });
-
+// window.addEventListener("load", async () => {
+//     // Modern dapp browsers...
+//     alert(window.imToken)
+//     if (window.ethereum) {
+//         alert(window.ethereum)
+//         window.web3 = new Web3(ethereum);
+//         try {
+//             // Request account access if needed
+//             await ethereum.enable();
+//             // Acccounts now exposed
+//             web3.eth.sendTransaction({
+//                 /* ... */
+//             });
+//         } catch (error) {
+//             // User denied account access...
+//         }
+//     }
+//     // Legacy dapp browsers...
+//     else if (window.web3) {
+//         alert(window.web3)
+//         window.web3 = new Web3(web3.currentProvider);
+//         // Acccounts always exposed
+//         web3.eth.sendTransaction({
+//             /* ... */
+//         });
+//     }
+//     // Non-dapp browsers...
+//     else {
+//         console.log(
+//             "Non-Ethereum browser detected. You should consider trying MetaMask!"
+//         );
+//         alert(
+//             "Non-Ethereum browser detected. You should consider trying MetaMask!"
+//         );
+//     }
+// });
+// if (window.imToken) {
+//     alert(window.imToken)
+// } else {
+//     window.addEventListener('sdkReady', () => {
+//         alert(window.imToken)
+//     })
+// }
 const browserLanguage = (navigator.language || navigator.browserLanguage)
     .toLowerCase(),
     i18n = new VueI18n({
