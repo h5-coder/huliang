@@ -32,9 +32,8 @@ Vue.use(VueI18n)
 // });
 // window.addEventListener("load", async () => {
 //     // Modern dapp browsers...
-//     alert(window.imToken)
 //     if (window.ethereum) {
-//         alert(window.ethereum)
+//         alert('window.ethereum',window.ethereum)
 //         window.web3 = new Web3(ethereum);
 //         try {
 //             // Request account access if needed
@@ -49,7 +48,7 @@ Vue.use(VueI18n)
 //     }
 //     // Legacy dapp browsers...
 //     else if (window.web3) {
-//         alert(window.web3)
+//         alert(`window.web3${window.web3}`)
 //         window.web3 = new Web3(web3.currentProvider);
 //         // Acccounts always exposed
 //         web3.eth.sendTransaction({
