@@ -212,12 +212,13 @@ var _this = this;
 __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_7_vue_i18n__["a" /* default */]);
 
 window.addEventListener("load", __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+    var enable;
     return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
         while (1) {
             switch (_context.prev = _context.next) {
                 case 0:
                     if (!window.ethereum) {
-                        _context.next = 13;
+                        _context.next = 15;
                         break;
                     }
 
@@ -228,19 +229,22 @@ window.addEventListener("load", __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helper
                     return ethereum.enable();
 
                 case 6:
-                    web3.eth.sendTransaction({});
-                    _context.next = 11;
-                    break;
+                    enable = _context.sent;
 
-                case 9:
-                    _context.prev = 9;
-                    _context.t0 = _context['catch'](3);
+                    alert(enable);
+                    web3.eth.sendTransaction({});
+                    _context.next = 13;
+                    break;
 
                 case 11:
-                    _context.next = 14;
-                    break;
+                    _context.prev = 11;
+                    _context.t0 = _context['catch'](3);
 
                 case 13:
+                    _context.next = 16;
+                    break;
+
+                case 15:
                     if (window.web3) {
                         alert('window.web3' + window.web3);
                         window.web3 = new Web3(web3.currentProvider);
@@ -251,12 +255,12 @@ window.addEventListener("load", __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helper
                             alert("Non-Ethereum browser detected. You should consider trying MetaMask!");
                         }
 
-                case 14:
+                case 16:
                 case 'end':
                     return _context.stop();
             }
         }
-    }, _callee, _this, [[3, 9]]);
+    }, _callee, _this, [[3, 11]]);
 })));
 
 var browserLanguage = (navigator.language || navigator.browserLanguage).toLowerCase(),
