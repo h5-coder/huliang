@@ -30,44 +30,38 @@ Vue.use(VueI18n)
 //         next()
 //     }
 // });
-window.addEventListener("load", async () => {
-    // Modern dapp browsers...
-    if (window.ethereum) {
-        alert(`window.ethereum${JSON.stringify(window.ethereum)}`,)
-        window.web3 = new Web3(ethereum);
-        try {
-            // Request account access if needed
-            const enable = await ethereum.enable();
-            alert(enable)
-            // web3.eth.sendTransaction({});
-        } catch (error) {
-            alert(error)
-        }
-    }
-    // Legacy dapp browsers...
-    else if (window.web3) {
-        alert(`window.web3${window.web3}`)
-        window.web3 = new Web3(web3.currentProvider);
-        // Acccounts always exposed
-        // web3.eth.sendTransaction({});
-    }
-    // Non-dapp browsers...
-    else {
-        console.log(
-            "Non-Ethereum browser detected. You should consider trying MetaMask!"
-        );
-        alert(
-            "Non-Ethereum browser detected. You should consider trying MetaMask!"
-        );
-    }
-});
-// if (window.imToken) {
-//     alert(window.imToken)
-// } else {
-//     window.addEventListener('sdkReady', () => {
-//         alert(window.imToken)
-//     })
-// }
+// window.addEventListener("load", async () => {
+//     // Modern dapp browsers...
+//     if (window.ethereum) {
+//         alert(`window.ethereum${JSON.stringify(window.ethereum)}`,)
+//         window.web3 = new Web3(ethereum);
+//         try {
+//             // Request account access if needed
+//             await ethereum.enable();
+//             alert(111111)
+//             // web3.eth.sendTransaction({});
+//         } catch (error) {
+//             alert(error)
+//         }
+//     }
+//     // Legacy dapp browsers...
+//     else if (window.web3) {
+//         alert(`window.web3${window.web3}`)
+//         console.log(web3.eth.accounts)
+//         window.web3 = new Web3(web3.currentProvider);
+//         // Acccounts always exposed
+//         // web3.eth.sendTransaction({});
+//     }
+//     // Non-dapp browsers...
+//     else {
+//         console.log(
+//             "Non-Ethereum browser detected. You should consider trying MetaMask!"
+//         );
+//         alert(
+//             "Non-Ethereum browser detected. You should consider trying MetaMask!"
+//         );
+//     }
+// });
 const browserLanguage = (navigator.language || navigator.browserLanguage)
     .toLowerCase(),
     i18n = new VueI18n({
@@ -83,8 +77,6 @@ window.vueVm = new Vue({
     el: '#app',
     data() {
         return {
-            loginPopFlag: false,
-            redirectPath: '',
         }
     },
     router,
