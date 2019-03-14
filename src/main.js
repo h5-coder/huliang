@@ -41,7 +41,7 @@ window.addEventListener("load", async () => {
             alert(enable)
             // web3.eth.sendTransaction({});
         } catch (error) {
-            // User denied account access...
+            alert(error)
         }
     }
     // Legacy dapp browsers...

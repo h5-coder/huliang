@@ -221,7 +221,7 @@ window.addEventListener("load", __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helper
             switch (_context.prev = _context.next) {
                 case 0:
                     if (!window.ethereum) {
-                        _context.next = 14;
+                        _context.next = 15;
                         break;
                     }
 
@@ -235,18 +235,20 @@ window.addEventListener("load", __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helper
                     enable = _context.sent;
 
                     alert(enable);
-                    _context.next = 12;
+                    _context.next = 13;
                     break;
 
                 case 10:
                     _context.prev = 10;
                     _context.t0 = _context['catch'](3);
 
-                case 12:
-                    _context.next = 15;
+                    alert(_context.t0);
+
+                case 13:
+                    _context.next = 16;
                     break;
 
-                case 14:
+                case 15:
                     if (window.web3) {
                         alert('window.web3' + window.web3);
                         window.web3 = new Web3(web3.currentProvider);
@@ -255,7 +257,7 @@ window.addEventListener("load", __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helper
                             alert("Non-Ethereum browser detected. You should consider trying MetaMask!");
                         }
 
-                case 15:
+                case 16:
                 case 'end':
                     return _context.stop();
             }
