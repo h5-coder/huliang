@@ -2,7 +2,7 @@
 import tp from "tp-js-sdk";
 
 window.Web3 && (window.Web3=require('web3'))
-
+console.log(Web3)
 class ContactService {
     web3 = null
     // web3 = new Web3('https://rinkeby.infura.io/');//rinkeby测速网络节点地址，开发测试可以使用测试网络，快
