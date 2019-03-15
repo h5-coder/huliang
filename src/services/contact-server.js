@@ -60,9 +60,9 @@ class ContactService {
         if (type == 0) {
             imToken.callAPI('device.showAccountSwitch', { chainType: 'ETHEREUM' }, function (err, address) {
                 if (err) {
-                    console.log('err',err,err.message)
+                    console.log('err', err, err.message)
                 } else {
-                    console.log('address',address)
+                    console.log('address', address)
                 }
             })
         } else if (type == 1) {
@@ -87,12 +87,44 @@ class ContactService {
             })
         })
     }
+    getCurrentWallet() {
+        const { type } = this.environment
+        console.log('this.web3.eth.accounts', this.web3.eth.accounts)
+
+        return new Promise((resolve, reject) => {
+            if (type == 0) {
+                imToken.callAPI('user.getCurrentAccount', function(err, address) {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve(address)
+                    }
+                })
+            } else if (type == 1) {
+
+            } else if (type == 2) {
+                resolve(this.web3.eth.accounts)
+            } else if (type == 3) {
+                return tp.getCurrentWallet()
+            } else if (window) {
+
+            } else {
+                reject(new Error`app close error`)
+            }
+        })
+    }
     getWalletList() {
         const { type } = this.environment
         console.log('this.web3.eth.accounts', this.web3.eth.accounts)
         return new Promise((resolve, reject) => {
             if (type == 0) {
-                resolve(this.web3.eth.accounts)
+                imToken.callAPI('user.getAccountList', function (err, list) {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve(list)
+                    }
+                })
             } else if (type == 1) {
 
             } else if (type == 2) {
@@ -107,8 +139,12 @@ class ContactService {
         })
 
     }
+
     sendTransaction() {
         const { type } = this.environment
+        this.web3.eth.sendTransaction({
+
+        })
         if (type == 0) {
 
         } else if (type == 1) {

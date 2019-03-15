@@ -2,8 +2,12 @@
     <div class="index">
         <ul>
             <li>
-                <button @click="getBlockNumber">运行环境：</button>
+                <span>运行环境：</span>
                 {{environment}}
+            </li>
+            <li>
+                <span>当前用户：</span>
+                {{curWallet}}
             </li>
             <li>
                 <button @click="getBlockNumber">获取区高：</button>
@@ -45,6 +49,7 @@ export default {
             blockNumber: 0,
             appInfo: "",
             environment: "",
+            curWallet:contactServer.web3.eth.defaultAccount,
             walletList:[]
         };
     },
