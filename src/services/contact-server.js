@@ -15,8 +15,14 @@ class ContactService {
         // Modern dapp browsers..
         if (window.ethereum) {
             this.web3 = new window.Web3(ethereum);
-            this.environment.name = 'Modern dapp browsers'
-            this.environment.type = 1
+            if (!!window.imToken) {
+                this.environment.name = 'imToken DApp browser'
+                this.environment.type = 0
+            } else {
+                this.environment.name = 'Modern dapp browsers'
+                this.environment.type = 1
+            }
+
         }
         // Legacy dapp browsers...
         else if (window.web3) {
@@ -25,7 +31,7 @@ class ContactService {
             this.environment.name = 'Legacy dapp browsers'
             this.environment.type = 2
             this.web3.eth.getBlockNumber((code, res) => {
-                alert(`getBlockNumber==${res}`)
+                console.log(`getBlockNumber==${res}`)
             })
         } else if (tp.isConnected()) {
             alert(`tp isConnected==${tp.isConnected()}`)
@@ -49,9 +55,11 @@ class ContactService {
 
     getAppInfo() {
         const { type } = this.environment
-        if (type == 1) {
+        if (type ==0) {
 
-        } else if (type == 2) {
+        }else if (type == 1) {
+
+        }  else if (type == 2) {
 
         } else if (type == 3) {
             return tp.getAppInfo()
@@ -61,25 +69,40 @@ class ContactService {
     }
 
     getBlockNumber() {
-
+        return new Promise((resolve, reject) => {
+            this.web3.eth.getBlockNumber(function (error, number) {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(number)
+                }
+            })
+        })
     }
     getWalletList() {
         const { type } = this.environment
-        if (type == 1) {
+        return new Promise((resolve, reject) => {
+            if (type ==0) {
 
-        } else if (type == 2) {
+            }else if (type == 1) {
 
-        } else if (type == 3) {
-            return tp.getWalletList('eth')
-        } else if (window) {
-            window.close()
-        } else {
-            console.error(`app close error`)
-        }
+            } else if (type == 2) {
+                resolve(this.web3.eth.accounts)
+            } else if (type == 3) {
+                return tp.getWalletList('eth')
+            } else if (window) {
+                window.close()
+            } else {
+                reject(new Error`app close error`)
+            }
+        })
+
     }
     sendTransaction() {
         const { type } = this.environment
-        if (type == 1) {
+        if (type ==0) {
+
+        }else if (type == 1) {
 
         } else if (type == 2) {
 
@@ -109,7 +132,9 @@ class ContactService {
 
     close() {
         const { type } = this.environment
-        if (type == 1) {
+        if (type ==0) {
+
+        }else if (type == 1) {
 
         } else if (type == 2) {
 

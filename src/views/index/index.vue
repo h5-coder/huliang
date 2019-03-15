@@ -55,9 +55,9 @@ export default {
     //方法
     methods: {
         getBlockNumber() {
-            // contactServer.web3.eth.getBlockNumber().then(blockNumber => {
-            //     this.blockNumber = blockNumber;
-            // });
+            contactServer.getBlockNumber().then(res=>{
+                this.blockNumber=res
+            })
         },
         getAppInfo() {
             this.appInfo = contactServer.getAppInfo();
