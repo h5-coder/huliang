@@ -54,7 +54,7 @@ class ContactService {
     getAppInfo() {
         const { type } = this.environment
         if (type == 0) {
-            imToken.callAPI('device.showAccountSwitch', { chainType: 'ETHEREUM' }, function (err, address) {
+            imToken.callAPI('user.showAccountSwitch', { chainType: 'ETHEREUM' }, function (err, address) {
                 if (err) {
                     console.log('err', err, err.message)
                 } else {
