@@ -15,7 +15,6 @@ class ContactService {
         // Modern dapp browsers..
         if (window.ethereum) {
             this.web3 = new window.Web3(ethereum);
-            this.environment = 'Modern dapp browsers'
             this.environment.name = 'Modern dapp browsers'
             this.environment.type = 1
         }
