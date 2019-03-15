@@ -18,7 +18,7 @@
     "vue": "^2.5.17",
     "vue-i18n": "^8.3.0",
     "vue-router": "^2.8.1",
-    "web3": "^1.0.0-beta.48"
+    "web3": "^0.20.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

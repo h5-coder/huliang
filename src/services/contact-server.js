@@ -1,8 +1,7 @@
-// const Web3=require('web3')
 import tp from "tp-js-sdk";
-console.log('window.imToken',window.imToken)
+
 window.Web3 || (window.Web3=require('web3'))
-console.log(window.Web3)
+
 class ContactService {
     web3 = null
     // web3 = new Web3('https://rinkeby.infura.io/');//rinkeby测速网络节点地址，开发测试可以使用测试网络，快
@@ -81,9 +80,10 @@ class ContactService {
     }
     getWalletList() {
         const { type } = this.environment
+        console.log('this.web3.eth.accounts',this.web3.eth.accounts)
         return new Promise((resolve, reject) => {
             if (type ==0) {
-
+                resolve(this.web3.eth.accounts)
             }else if (type == 1) {
 
             } else if (type == 2) {
