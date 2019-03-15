@@ -49,7 +49,7 @@ export default {
             blockNumber: 0,
             appInfo: "",
             environment: "",
-            curWallet:contactServer.web3.eth.defaultAccount,
+            curWallet:'',
             walletList:[]
         };
     },
@@ -82,6 +82,7 @@ export default {
     //生命周期函数
     created() {
         this.environment = contactServer.environment.name;
+        contactServer.getCurrentWallet().then(res=>this.curWallet=res)
     },
     beforeMount() {},
     mounted() {},

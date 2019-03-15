@@ -36,7 +36,6 @@ class ContactService {
                 console.log(`getBlockNumber==${res}`)
             })
         } else if (tp.isConnected()) {
-            alert(`tp isConnected==${tp.isConnected()}`)
             this.environment.name = 'TokenPocket dapp browsers'
             this.environment.type = 3
         }
@@ -49,10 +48,7 @@ class ContactService {
                 "Non-Ethereum browser detected. You should consider trying MetaMask!"
             );
         }
-        // this.web3.eth.getBlockNumber().then(
-        //     function(result){
-        //         console.log("blockNumber:"+result);
-        //     })
+        console.log(`type=${this.environment.type}`)
     }
 
     getAppInfo() {
@@ -89,7 +85,7 @@ class ContactService {
     }
     getCurrentWallet() {
         const { type } = this.environment
-        console.log('this.web3.eth.accounts', this.web3.eth.accounts)
+        console.log('this.web3.eth.defaultAccount',this.web3 && this.web3.eth.defaultAccount)
 
         return new Promise((resolve, reject) => {
             if (type == 0) {
@@ -103,11 +99,16 @@ class ContactService {
             } else if (type == 1) {
 
             } else if (type == 2) {
-                resolve(this.web3.eth.accounts)
+                resolve(this.web3.eth.defaultAccount)
             } else if (type == 3) {
-                return tp.getCurrentWallet()
-            } else if (window) {
-
+                return tp.getCurrentWallet().then(res => {
+                    const {result,data,msg}=res
+                    if (result) {
+                        resolve(data.address)
+                    }
+                })
+            } else if (window.web3) {
+                reject(this.web3.eth.defaultAccount)
             } else {
                 reject(new Error`app close error`)
             }
@@ -115,7 +116,7 @@ class ContactService {
     }
     getWalletList() {
         const { type } = this.environment
-        console.log('this.web3.eth.accounts', this.web3.eth.accounts)
+        console.log('this.web3.eth.accounts',this.web3 && this.web3.eth.accounts)
         return new Promise((resolve, reject) => {
             if (type == 0) {
                 imToken.callAPI('user.getAccountList', function (err, list) {
