@@ -1,8 +1,8 @@
 // const Web3=require('web3')
 import tp from "tp-js-sdk";
-
-window.Web3 && (window.Web3=require('web3'))
-console.log(Web3)
+console.log('window.imToken',window.imToken)
+window.Web3 || (window.Web3=require('web3'))
+console.log(window.Web3)
 class ContactService {
     web3 = null
     // web3 = new Web3('https://rinkeby.infura.io/');//rinkeby测速网络节点地址，开发测试可以使用测试网络，快
@@ -14,7 +14,7 @@ class ContactService {
     constructor() {
         // Modern dapp browsers..
         if (window.ethereum) {
-            this.web3 = new Web3(ethereum);
+            this.web3 = new window.Web3(ethereum);
             this.environment = 'Modern dapp browsers'
             this.environment.name = 'Modern dapp browsers'
             this.environment.type = 1
@@ -22,7 +22,7 @@ class ContactService {
         // Legacy dapp browsers...
         else if (window.web3) {
             console.log(web3.eth.accounts)
-            this.web3 = new Web3(web3.currentProvider);
+            this.web3 = new window.Web3(web3.currentProvider);
             this.environment.name = 'Legacy dapp browsers'
             this.environment.type = 2
             this.web3.eth.getBlockNumber((code, res) => {
