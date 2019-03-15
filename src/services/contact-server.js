@@ -1,6 +1,6 @@
 import tp from "tp-js-sdk";
 
-window.Web3 || (window.Web3=require('web3'))
+window.Web3 || (window.Web3 = require('web3'))
 
 class ContactService {
     web3 = null
@@ -54,11 +54,17 @@ class ContactService {
 
     getAppInfo() {
         const { type } = this.environment
-        if (type ==0) {
+        if (type == 0) {
+            imToken.callAPI('device.showAccountSwitch', { chainType: 'ETHEREUM' }, function (err, address) {
+                if (err) {
+                    console.log('err',err,err.message)
+                } else {
+                    console.log('address',address)
+                }
+            })
+        } else if (type == 1) {
 
-        }else if (type == 1) {
-
-        }  else if (type == 2) {
+        } else if (type == 2) {
 
         } else if (type == 3) {
             return tp.getAppInfo()
@@ -80,11 +86,11 @@ class ContactService {
     }
     getWalletList() {
         const { type } = this.environment
-        console.log('this.web3.eth.accounts',this.web3.eth.accounts)
+        console.log('this.web3.eth.accounts', this.web3.eth.accounts)
         return new Promise((resolve, reject) => {
-            if (type ==0) {
+            if (type == 0) {
                 resolve(this.web3.eth.accounts)
-            }else if (type == 1) {
+            } else if (type == 1) {
 
             } else if (type == 2) {
                 resolve(this.web3.eth.accounts)
@@ -100,9 +106,9 @@ class ContactService {
     }
     sendTransaction() {
         const { type } = this.environment
-        if (type ==0) {
+        if (type == 0) {
 
-        }else if (type == 1) {
+        } else if (type == 1) {
 
         } else if (type == 2) {
 
@@ -117,7 +123,7 @@ class ContactService {
                     value: 1000000000
                 }).then(res => {
                     alert(res)
-                }).catch(error=>{
+                }).catch(error => {
                     alert(error)
                 })
             } catch (error) {
@@ -132,9 +138,9 @@ class ContactService {
 
     close() {
         const { type } = this.environment
-        if (type ==0) {
+        if (type == 0) {
 
-        }else if (type == 1) {
+        } else if (type == 1) {
 
         } else if (type == 2) {
 
