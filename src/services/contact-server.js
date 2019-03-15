@@ -17,6 +17,9 @@ class ContactService {
             if (!!window.imToken) {
                 this.environment.name = 'imToken DApp browser'
                 this.environment.type = 0
+                window.ethereum.enable().then(accounts => {
+                    window.accounts = accounts
+                })
             } else {
                 this.environment.name = 'Modern dapp browsers'
                 this.environment.type = 1
