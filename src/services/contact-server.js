@@ -143,20 +143,36 @@ class ContactService {
 
     sendTransaction() {
         const { type } = this.environment
-        this.web3.eth.sendTransaction({
 
-        })
         if (type == 0) {
-
+            this.web3.eth.sendTransaction({
+                from: '0xeb1716174f3e7643ebae0183d9d43dad0838bb1b',
+                to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
+                gasPrice: 100000000,
+                gasLimit: 6000000,
+                data: '0xaawefwefwefwefwefef',
+                value: 1000000000
+            }, function (err, address) {
+                    console.log(err, address)
+            })
         } else if (type == 1) {
 
         } else if (type == 2) {
-
+            this.web3.eth.sendTransaction({
+                from: '0xeb1716174f3e7643ebae0183d9d43dad0838bb1b',
+                to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
+                gasPrice: 100000000,
+                gasLimit: 6000000,
+                data: '0xaawefwefwefwefwefef',
+                value: 1000000000
+            }, function (err, address) {
+                    console.log(err, address)
+            })
         } else if (type == 3) {
             try {
                 tp.sendEthTransaction({
                     from: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
-                    to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
+                    to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707af6',
                     gasPrice: 100000000,
                     gasLimit: 60000,
                     data: '0xaawefwefwefwefwefef',
@@ -183,7 +199,7 @@ class ContactService {
         } else if (type == 1) {
 
         } else if (type == 2) {
-
+            window.close()
         } else if (type == 3) {
             tp.close()
         } else if (window) {
