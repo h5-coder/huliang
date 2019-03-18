@@ -178,12 +178,12 @@ class ContactService {
                     data: '0xaawefwefwefwefwefef',
                     value: 1000000000
                 }).then(res => {
-                    alert(res)
+                    console.log(res)
                 }).catch(error => {
-                    alert(error)
+                    console.log(error)
                 })
             } catch (error) {
-                alert(error)
+                console.log(error)
             }
         } else if (window) {
             window.close()
