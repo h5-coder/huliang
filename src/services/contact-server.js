@@ -202,7 +202,7 @@ class ContactService {
         } else {
             console.error(`app close error`)
         }
-    } 
+    }
 
     getParmas(data,value=0){
         return {
