@@ -86,7 +86,7 @@ export default {
             contactServer.sendTransaction()
         },
         depoist(){
-            const value = web3.toWei('1', 'ether');
+            const value = contactServer.web3.toWei('1', 'ether');
             const data= contactServer.contact.depoist.getData()
             contactServer.sendTransaction(data,value)
            console.log(data)
