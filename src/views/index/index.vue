@@ -33,6 +33,13 @@
                 <button @click="close">关闭应用</button>
             </li>
         </ul>
+        <p>合约方法：</p>
+        <ul>
+            <li>
+            <button @click="depoist">depoist：</button>
+                <span>depoist</span>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -77,6 +84,12 @@ export default {
         },
         sendTransaction(){
             contactServer.sendTransaction()
+        },
+        depoist(){
+            const value = web3.toWei('1', 'ether');
+            const data= contactServer.contact.depoist.getData()
+            contactServer.sendTransaction(data,value)
+           console.log(data)
         }
     },
     //生命周期函数

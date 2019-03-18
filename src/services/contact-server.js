@@ -1,11 +1,14 @@
 import tp from "tp-js-sdk";
+import abi from '@/../static/json/abi'
 
 window.Web3 || (window.Web3 = require('web3'))
 
 class ContactService {
-    web3 = null
+    web3 = null;
+    contactAddress = '0xdf964040703b41e2b64a8eb07368a9163e149e7f';
     // web3 = new Web3('https://rinkeby.infura.io/');//rinkeby测速网络节点地址，开发测试可以使用测试网络，快
     // web3 = new Web3('https://mainnet.infura.io/');//以太坊正式网络节点地址
+    contact = null;
     environment = {
         name: '',
         type: ''
@@ -48,7 +51,11 @@ class ContactService {
                 "Non-Ethereum browser detected. You should consider trying MetaMask!"
             );
         }
-        console.log(`type=${this.environment.type}`)
+        if(this.web3){
+            const contract = web3.eth.contract(abi);
+            this.contact= contract.at(this.address);
+        }
+        console.log(`type=${this.environment.type}`,this)
     }
 
     getAppInfo() {
@@ -141,49 +148,37 @@ class ContactService {
 
     }
 
-    sendTransaction() {
+    sendTransaction(data,value) {
+        // {
+        //     from: '0xeb1716174f3e7643ebae0183d9d43dad0838bb1b',
+        //     to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
+        //     gasPrice: 100000000,
+        //     gasLimit: 6000000,
+        //     data: '0xaawefwefwefwefwefef',
+        //     value: 1000000000
+        // }
         const { type } = this.environment
 
         if (type == 0) {
-            this.web3.eth.sendTransaction({
-                from: '0xeb1716174f3e7643ebae0183d9d43dad0838bb1b',
-                to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
-                gasPrice: 100000000,
-                gasLimit: 6000000,
-                data: '0xaawefwefwefwefwefef',
-                value: 1000000000
-            }, function (err, address) {
+            this.web3.eth.sendTransaction(this.getParmas(data,value), function (err, address) {
                     console.log(err, address)
             })
         } else if (type == 1) {
 
         } else if (type == 2) {
-            this.web3.eth.sendTransaction({
-                from: '0xeb1716174f3e7643ebae0183d9d43dad0838bb1b',
-                to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
-                gasPrice: 100000000,
-                gasLimit: 6000000,
-                data: '0xaawefwefwefwefwefef',
-                value: 1000000000
-            }, function (err, address) {
+            this.web3.eth.sendTransaction(this.getParmas(data,value), function (err, address) {
                     console.log(err, address)
             })
         } else if (type == 3) {
             try {
-                tp.sendEthTransaction({
-                    from: '0x52a9210b5a4fbaa2ef872f7a28446df02a707afc',
-                    to: '0x52a9210b5a4fbaa2ef872f7a28446df02a707af6',
-                    gasPrice: 100000000,
-                    gasLimit: 60000,
-                    data: '0xaawefwefwefwefwefef',
-                    value: 1000000000
-                }).then(res => {
-                    alert(res)
+                console.log('tp.sendEthTransaction')
+                tp.sendEthTransaction(this.getParmas(data,value)).then(res => {
+                    console.log(res)
                 }).catch(error => {
-                    alert(error)
+                    console.log(error)
                 })
             } catch (error) {
-                alert(error)
+                console.log(error)
             }
         } else if (window) {
             window.close()
@@ -206,6 +201,17 @@ class ContactService {
             window.close()
         } else {
             console.error(`app close error`)
+        }
+    } 
+
+    getParmas(data,value=0){
+        return {
+            from: this.web3.defaultAccount,
+            to:this.contactAddress,
+            gasPrice: 100000000,
+            gasLimit: 6000000,
+            data,
+            value,
         }
     }
 
