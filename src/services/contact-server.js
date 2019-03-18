@@ -68,8 +68,8 @@ class ContactService {
             );
         }
         if(this.web3){
-            const contract = web3.eth.contract(abi);
-            this.contact= contract.at(this.address);
+            const contract = this.web3.eth.contract(abi);
+            this.contact= contract.at(this.contactAddress);
         }
         console.log(`type=${this.environment.type}`,this)
     }
