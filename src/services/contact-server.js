@@ -149,11 +149,9 @@ class ContactService {
                         resolve(list)
                     }
                 })
-            } else if (type == 1) {
-
-            } else if (type == 2) {
+            } else if (type == 1||type == 2) {
                 resolve(this.web3.eth.accounts)
-            } else if (type == 3) {
+            }else if (type == 3) {
                 tp.getWalletList('eth').then(res => {
                     this.log('tp.getWalletList', res)
                     resolve(res.wallets.eth)
@@ -184,11 +182,9 @@ class ContactService {
             this.web3.eth.sendTransaction(parmas, function (err, address) {
                     console.log(err, address)
             })
-        } else if (type == 1) {
-
-        } else if (type == 2) {
+        } else if (type == 1||type == 2) {
             this.web3.eth.sendTransaction(parmas, function (err, address) {
-                    console.log(err, address)
+                console.log(err, address)
             })
         } else if (type == 3) {
             console.log('tp.sendEthTransaction')
@@ -212,9 +208,7 @@ class ContactService {
         const { type } = this.environment
         if (type == 0) {
 
-        } else if (type == 1) {
-
-        } else if (type == 2) {
+        } else if (type == 1||type == 2) {
             window.close()
         } else if (type == 3) {
             tp.close()
