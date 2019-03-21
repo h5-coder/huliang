@@ -9,16 +9,18 @@ import directives from '@/directives/index.js'
 import VueI18n from 'vue-i18n'; //多语言
 import messages from '@/lang/index';
 import VConsole from 'vconsole'
+// import { AlertModule } from 'vux'
 //css
 import '../static/css/reset.css'
 
 //less
 import "./less/index.less"
 
-let vConsole = new VConsole();
+// let vConsole = new VConsole();
 
 // Vue.use(Mint);
 Vue.use(VueI18n)
+// Vue.use(vuxAlertPlugin)
 
 // router.beforeEach((to, from, next) => {
 

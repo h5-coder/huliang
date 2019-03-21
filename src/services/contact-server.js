@@ -220,8 +220,10 @@ class ContactService {
     }
 
     getParmas(data, value = 0) {
-        this.log('getParmas',this.currentWallet.address)
-        return {
+        if (!this.currentWallet.address) {
+            // vueVm
+        }
+        const parmas={
             from: this.currentWallet.address,
             to:this.contactAddress,
             gasPrice: 100000000,
@@ -229,6 +231,8 @@ class ContactService {
             data,
             value,
         }
+        this.log('getParmas',parmas)
+        return parmas
     }
 
     getId() {
